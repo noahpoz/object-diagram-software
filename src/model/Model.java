@@ -11,27 +11,15 @@ import codeGeneration.*;
 import dataset.*;
 import ui.UI;
 
-/* We should be able to call generateNewCode on the model, which will:
-   		- put a MasterSet object in _masterSet
-   		- put a CodeGenerator object in _codeGenerator
-   		
-   I'm thinking if we could define a getCode() method which, when called on _codeGenerator,
-   will return the generated code in this format:
-   
-   		ArrayList<String[]> such that each String contains:
-   		
-   				{ CLASSNAME, CLASS CODE }
-  
- */
-
-
 public class Model extends Observable {
 
+	private UI _ui;
 	private CodeGenerator _codeGenerator;
 	
-	public Model() {
+	public Model(int[] args, UI ui) {
 		
-		createNewCode(3, 5, 3);
+		_ui = ui;
+		createNewCode(args[0], args[1], args[2]);
 
 	}
 	
@@ -53,7 +41,8 @@ public class Model extends Observable {
 					+ "generate a MasterSet.");
 			return false;
 		} else {
-			return SolutionChecker.checkSolution(shapes, _codeGenerator.getMasterSet(), _codeGenerator.getLocalVars());
+			return SolutionChecker.checkSolution(shapes, _codeGenerator.getMasterSet(), 
+					_codeGenerator.getLocalVars(), _ui.getEditPane());
 		}
 	}
 }

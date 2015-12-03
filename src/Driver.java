@@ -44,11 +44,12 @@ public class Driver {
         	System.err.println("Error: You have exceeded the five instance variable limit.");
         }
         
-        SwingUtilities.invokeLater(new UI());
+        SwingUtilities.invokeLater(new UI(formattedArgs));
     }
     
     private static void showFormat() {
-    	System.out.println("<number of objects, number of classes, max instance variables>");
+    	System.out.println("Format: <number of objects, number of classes, max instance variables>");
+    	System.out.println("Example: 3 12 4");
     	System.exit(0);
     }
 }

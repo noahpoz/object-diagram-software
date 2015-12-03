@@ -25,6 +25,11 @@ public class UI implements Runnable {
 	private EditorPane _editPane;
 	
 	private Model _model;
+	private int[] _args;
+	
+	public UI(int[] args) {
+		_args = args;
+	}
 	
 	public static void formatJComponent(JComponent j, Dimension d, int x, int y) {
 		j.setSize(d);
@@ -47,7 +52,7 @@ public class UI implements Runnable {
 	@Override
 	public void run() {
 		
-		_model = new Model();
+		_model = new Model(_args, this);
 		
 		//setting up main frame and main panel
 		_window = new JFrame("Object Diagram Analysis");
@@ -79,6 +84,10 @@ public class UI implements Runnable {
 	
 	public Model getModel() {
 		return _model;
+	}
+	
+	public EditorPane getEditPane() {
+		return _editPane;
 	}
 	
 	public int getPaneHeight() {

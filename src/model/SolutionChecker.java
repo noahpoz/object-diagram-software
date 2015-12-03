@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import dataset.MasterSet;
 import dataset.VirtualInstanceVariable;
 import dataset.VirtualObject;
+import ui.EditorPane;
 import ui.shapes.ObjectShape;
 import ui.shapes.Shape;
 import ui.shapes.VariableShape;
@@ -24,7 +25,8 @@ import ui.shapes.VariableShape;
 
 public class SolutionChecker {
 
-	public static boolean checkSolution(ArrayList<Shape> shapes, MasterSet set, HashMap<String, ArrayList<String[]>> locals) {
+	public static boolean checkSolution(ArrayList<Shape> shapes, MasterSet set, 
+			HashMap<String, ArrayList<String[]>> locals, EditorPane editPane) {
 		JFrame frame = new JFrame();
 
 		ArrayList<VirtualObject> instances = set.getObjects();
@@ -48,7 +50,7 @@ public class SolutionChecker {
 			checkObjectNum = true;
 		}
 		else{
-			JOptionPane.showMessageDialog(frame, "Check your number of Objects");
+			editPane.displayMessage("Check your number of objects.");
 			return false;
 		}
 
@@ -67,7 +69,7 @@ public class SolutionChecker {
 			checkClassName = true;
 		}
 		else{
-			JOptionPane.showMessageDialog(frame,"Check your Class names");
+			editPane.displayMessage("Check your object names.");
 			return false;
 		}
 
@@ -89,7 +91,7 @@ public class SolutionChecker {
 			checkVarNum = true;
 		}
 		else{
-			JOptionPane.showMessageDialog(frame, "Check your number of Instance Variables");
+			editPane.displayMessage("Check your number of instance variables.");
 			return false;
 		}
 
@@ -115,13 +117,13 @@ public class SolutionChecker {
 					checkVarNames = true;
 				}
 				else{
-					JOptionPane.showMessageDialog(frame, "Check your Instance Variable Names");
+					editPane.displayMessage("Check your instance variable names.");
 					return false;
 				}
 			}
 		}
 		else{
-			JOptionPane.showMessageDialog(frame, "Check your Instance Variable Names");
+			editPane.displayMessage("Check your instance variable names.");
 			return false;
 		}
 
@@ -148,7 +150,7 @@ public class SolutionChecker {
 							checkVarNamesInObjects = true;
 						}
 						else{
-							JOptionPane.showMessageDialog(frame, "Check your Variable Names in each Object");
+							editPane.displayMessage("Check your variable names in each object.");
 							return false;
 						}
 					}
@@ -200,7 +202,7 @@ public class SolutionChecker {
 			checkReferences = true;
 		}
 		else{
-			JOptionPane.showMessageDialog(frame, "Check your References");
+			editPane.displayMessage("Check your references.");
 			return false;	
 		}
 

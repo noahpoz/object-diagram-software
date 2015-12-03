@@ -308,7 +308,7 @@ public class CodeGenerator {
 			//set each individual variable
 			for (VirtualInstanceVariable v : o.getInstanceVariables()) {
 				
-				dualCleanup += "\t\t" + currentName + ".set" + v.getName() + "(" + objectMap.get(v.getTarget()) + ")\n";
+				dualCleanup += "\t\t" + currentName + ".set" + v.getName() + "(" + objectMap.get(v.getTarget()) + ");\n";
 				
 			}
 		}
